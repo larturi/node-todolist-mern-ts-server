@@ -2,7 +2,6 @@ import { Router } from 'express';
 
 import { 
     getTasks,
-    getCompletedTasks,
     getTask,
     postTask,
     putTask,
@@ -12,7 +11,6 @@ import {
 const router = Router();
 
 router.get('/', getTasks)
-router.get('/completed', getCompletedTasks)
 router.get('/:id', getTask)
 router.post('/', postTask)
 router.put('/:id', putTask)

@@ -12,26 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTask = exports.putTask = exports.postTask = exports.getTask = exports.getCompletedTasks = exports.getTasks = void 0;
+exports.deleteTask = exports.putTask = exports.postTask = exports.getTask = exports.getTasks = void 0;
 const task_1 = __importDefault(require("../models/task"));
 const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const completed = (req.query.completed === 'true') ? 1 : 0;
     const tareas = yield task_1.default.findAll({
         where: {
-            completed: 0
+            completed: completed
         }
     });
     res.json({ tareas });
 });
 exports.getTasks = getTasks;
-const getCompletedTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const tareas = yield task_1.default.findAll({
-        where: {
-            completed: 1
-        }
-    });
-    res.json({ tareas });
-});
-exports.getCompletedTasks = getCompletedTasks;
 const getTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const tarea = yield task_1.default.findByPk(id);
