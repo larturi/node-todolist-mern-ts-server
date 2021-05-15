@@ -3,7 +3,6 @@ import cors from 'cors';
 
 import userRoutes from '../routes/task';
 import db from '../db/connection';
-
 class Server {
 
     private app: Application;

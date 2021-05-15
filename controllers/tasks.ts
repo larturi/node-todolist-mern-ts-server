@@ -4,11 +4,18 @@ import Task from '../models/task';
 
 export const getTasks = async (req: Request, res: Response) => {
 
+    const { query } = req;
+
+    const completed = (query.completed === 'true') ? 1 : 0;
+
+    console.log(completed)
+    console.log(query.completed)
+
     const tareas = await Task.findAll({
         where: {
-            completed: false
+            completed: completed
         }
-    })
+    });
 
     res.json({ tareas });
 };
