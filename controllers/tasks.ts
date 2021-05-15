@@ -4,16 +4,20 @@ import Task from '../models/task';
 
 export const getTasks = async (req: Request, res: Response) => {
 
-    const { query } = req;
+    const tareas = await Task.findAll({
+        where: {
+            completed: 0
+        }
+    });
 
-    const completed = (query.completed === 'true') ? 1 : 0;
+    res.json({ tareas });
+};
 
-    console.log(completed)
-    console.log(query.completed)
+export const getCompletedTasks = async (req: Request, res: Response) => {
 
     const tareas = await Task.findAll({
         where: {
-            completed: completed
+            completed: 1
         }
     });
 
