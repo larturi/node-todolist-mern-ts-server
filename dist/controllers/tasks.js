@@ -15,12 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTask = exports.putTask = exports.postTask = exports.getTask = exports.getTasks = void 0;
 const task_1 = __importDefault(require("../models/task"));
 const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const completed = (req.query.completed === 'true') ? 1 : 0;
-    const tareas = yield task_1.default.findAll({
-        where: {
-            completed: completed
-        }
-    });
+    const tareas = yield task_1.default.findAll({});
     res.json({ tareas });
 });
 exports.getTasks = getTasks;
