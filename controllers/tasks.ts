@@ -34,10 +34,12 @@ export const postTask = async (req: Request, res: Response) => {
     }
 };
 
-export const putTask= async (req: Request, res: Response) => {
+export const putTask = async (req: Request, res: Response) => {
     
     const { body } = req;
     const { id } = req.params;
+
+    console.log(body);
 
     try {
 
