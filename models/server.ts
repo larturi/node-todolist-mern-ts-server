@@ -13,7 +13,7 @@ class Server {
 
     constructor() {
         this.app = express();
-        this.port = process.env.PORT || '8000';
+        this.port = process.env.PORT || '3004';
 
         this.dbConnection();
         this.middlewares();
@@ -23,7 +23,7 @@ class Server {
     async dbConnection() {
         try {
             await db.authenticate();
-            console.log('Database online');
+            console.log('Database todolistapp online');
         } catch (error) {
             throw new Error(error);
         }

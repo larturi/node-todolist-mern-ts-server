@@ -4,9 +4,15 @@ import Task from '../models/task';
 
 export const getTasks = async (req: Request, res: Response) => {
 
-    const tareas = await Task.findAll({});
+    try {
+        const tareas = await Task.findAll({});
+        res.json({ tareas });
+        console.log(tareas);
+    } catch (error) {
+        console.log(error);
+    }
 
-    res.json({ tareas });
+    
 };
 
 export const getTask = async (req: Request, res: Response) => {
